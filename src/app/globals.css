@@ -42,3 +42,7 @@
     --c-blue-light: #90e0ef;
 }
 
+:root[data-theme="dark"]{
+    /* Empty */
+    --c-temp: red;
+}
