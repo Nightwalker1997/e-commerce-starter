@@ -1,7 +1,7 @@
 import prisma from '@/libs/prismadb';
+import { cache } from '@/libs/cache'
 
-
-export const getPopularProducts = () => {
+export const getPopularProducts = cache(() => {
     // try{
         const products = prisma.product.findMany({
             where:{
@@ -21,9 +21,11 @@ export const getPopularProducts = () => {
     // }catch(err: any){
     //     return [];
     // }
-}
+}, 
+['/', 'getPopularProducts'],
+{revalidate: 60 * 60}) //every hour
 
-export const getNewestProducts = () => {
+export const getNewestProducts = cache(() => {
     // try{
         const products = prisma.product.findMany({
             where:{
@@ -41,9 +43,12 @@ export const getNewestProducts = () => {
     // }catch(err: any){
     //     return [];
     // }
-}
+}, 
+['/', 'getNewestProducts'],
+{revalidate: 60 * 60}) //every hour
 
-export const getAllProducts = () => {
+
+export const getAllProducts = cache(() => {
     // try{
         const products = prisma.product.findMany({
             where:{
@@ -61,4 +66,6 @@ export const getAllProducts = () => {
     // }catch(err: any){
     //     return [];
         // }
-}
+}, 
+['/products', 'getAllProducts'],
+{revalidate: 60 * 60}) //every hour
