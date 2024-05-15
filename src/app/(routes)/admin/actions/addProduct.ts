@@ -4,6 +4,7 @@ import prisma from '@/libs/prismadb';
 import { z } from 'zod';
 import fs from 'fs/promises';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 const fileSchema = z.instanceof(File, { message: "Required"});
 const imageSchema = fileSchema.refine(
@@ -56,6 +57,9 @@ export default async function addProduct (formData: FormData) {
             imagePath: imagePath
         }
     })
+
+    revalidatePath('/');
+    revalidatePath('/products');
 
     redirect('/admin/products');
 }

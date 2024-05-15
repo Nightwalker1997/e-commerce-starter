@@ -5,6 +5,7 @@ import { z } from 'zod';
 import fs from 'fs/promises';
 import { redirect } from 'next/navigation';
 import getProduct from './getProduct';
+import { revalidatePath } from 'next/cache';
 
 const fileSchema = z.instanceof(File, { message: "Required"});
 const imageSchema = fileSchema.refine(
@@ -76,6 +77,10 @@ export default async function updateProduct (id: string, formData: FormData) {
             imagePath: imagePath
         }
     })
+
+    
+    revalidatePath('/');
+    revalidatePath('/products');
 
     redirect('/admin/products');
 }

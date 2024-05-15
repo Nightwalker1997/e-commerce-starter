@@ -1,6 +1,7 @@
 'use server';
 
 import prisma from '@/libs/prismadb';
+import { revalidatePath } from 'next/cache';
 
 const toggleProductAvailability = async (
     id: string, 
@@ -14,6 +15,11 @@ const toggleProductAvailability = async (
             isAvailableForPurchase
         }
     })
+
+    
+    revalidatePath('/');
+    revalidatePath('/products');
+
 }
 
 export default toggleProductAvailability;
