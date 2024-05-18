@@ -5,9 +5,7 @@ import {
 import ProductFetcher from "./components/productsFetcher";
 
 const Home = async () => {
-    const newesPro =  getNewestProducts();
-    const popularPro = getPopularProducts();
-    
+
     return (
         <main
             className="space-y-12"
