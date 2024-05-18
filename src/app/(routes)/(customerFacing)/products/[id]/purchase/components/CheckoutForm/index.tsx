@@ -108,7 +108,7 @@ const Form = ({
         stripe.confirmPayment({
             elements, 
             confirmParams: {
-                return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-sucess`
+                return_url: `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}/stripe/purchase-sucess`
         }}).then(({ error }) => {
             if(error.type === "card_error" || error.type === "validation_error"){
                 setErrorMessage(error.message)

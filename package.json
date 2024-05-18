@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "cp .env ./node_modules/react-email && email dev --dir src/email --port 3001"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -23,6 +24,8 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-email": "^2.1.2",
+    "resend": "^3.2.0",
     "stripe": "^15.6.0",
     "zod": "^3.23.8"
   },
