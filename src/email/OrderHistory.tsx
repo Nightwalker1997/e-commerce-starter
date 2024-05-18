@@ -12,46 +12,46 @@ import { OrderInformation } from "./components/OrderInformation"
 import React from "react"
 
 type OrderHistoryEmailProps = {
-  orders: {
-    id: string
-    pricePaidInCents: number
-    createdAt: Date
-    downloadVerificationId: string
-    product: {
-      name: string
-      imagePath: string
-      description: string
-    }
-  }[]
+    orders: {
+        id: string
+        priceInCents: number
+        createdAt: Date
+        downloadVerificationId: string
+        product: {
+            name: string
+            imagePath: string
+            description: string
+        }
+    }[]
 }
 
 OrderHistoryEmail.PreviewProps = {
-  orders: [
-    {
-      id: crypto.randomUUID(),
-      createdAt: new Date(),
-      pricePaidInCents: 10000,
-      downloadVerificationId: crypto.randomUUID(),
-      product: {
-        name: "Product name",
-        description: "Some description",
-        imagePath:
-          "/products/5aba7442-e4a5-4d2e-bfa7-5bd358cdad64-02 - What Is Next.js.jpg",
-      },
-    },
-    {
-      id: crypto.randomUUID(),
-      createdAt: new Date(),
-      pricePaidInCents: 2000,
-      downloadVerificationId: crypto.randomUUID(),
-      product: {
-        name: "Product name 2",
-        description: "Some other desc",
-        imagePath:
-          "/products/db3035a5-e762-41b0-996f-d54ec730bc9c-01 - Course Introduction.jpg",
-      },
-    },
-  ],
+    orders: [
+        {
+        id: crypto.randomUUID(),
+        createdAt: new Date(),
+        priceInCents: 10000,
+        downloadVerificationId: crypto.randomUUID(),
+            product: {
+                name: "Product name",
+                description: "Some description",
+                imagePath:
+                "/products/5aba7442-e4a5-4d2e-bfa7-5bd358cdad64-02 - What Is Next.js.jpg",
+            },
+        },
+        {
+            id: crypto.randomUUID(),
+            createdAt: new Date(),
+            priceInCents: 2000,
+            downloadVerificationId: crypto.randomUUID(),
+            product: {
+                name: "Product name 2",
+                description: "Some other desc",
+                imagePath:
+                "/products/db3035a5-e762-41b0-996f-d54ec730bc9c-01 - Course Introduction.jpg",
+            },
+        },
+    ],
 } satisfies OrderHistoryEmailProps
 
 export default function OrderHistoryEmail({ orders }: OrderHistoryEmailProps) {

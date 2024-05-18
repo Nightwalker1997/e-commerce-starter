@@ -1,10 +1,9 @@
-
+import OrdersForm from "../components/orderForm";
 
 const OrdersPage = () => {
+
     return (
-        <div>
-            Orders
-        </div>
+        <OrdersForm />
     )
 }
 
