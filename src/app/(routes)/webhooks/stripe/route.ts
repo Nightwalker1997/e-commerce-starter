@@ -30,14 +30,14 @@ export async function POST(req: NextRequest) {
       orders: { create: { productId, pricePaidInCents } },
     }
 
-    const {
-      orders: [order],
-    } = await prisma.user.upsert({
-      where: { email },
-      create: userFields,
-      update: userFields,
-      select: { orders: { orderBy: { createdAt: "desc" }, take: 1 } },
-    })
+    // const {
+    //   orders: [order],
+    // } = await prisma.user.upsert({
+    //   where: { email },
+    //   create: userFields,
+    //   update: userFields,
+    //   select: { orders: { orderBy: { createdAt: "desc" }, take: 1 } },
+    // })
 
     const downloadVerification = await prisma.downloadVerification.create({
       data: {
@@ -46,18 +46,18 @@ export async function POST(req: NextRequest) {
       },
     })
 
-        await resend.emails.send({
-            from: `Support <${process.env.SENDER_EMAIL}>`,
-            to: email,
-            subject: "Order Confirmation",
-            react: (
-                <PurchaseReceiptEmail
-                    order={order}
-                    product={product}
-                    downloadVerificationId={downloadVerification.id}
-                />
-            ),
-        })
+        // await resend.emails.send({
+        //     from: `Support <${process.env.SENDER_EMAIL}>`,
+        //     to: email,
+        //     subject: "Order Confirmation",
+        //     react: (
+        //         <PurchaseReceiptEmail
+        //             order={order}
+        //             product={product}
+        //             downloadVerificationId={downloadVerification.id}
+        //         />
+        //     ),
+        // })
   }
 
   return new NextResponse()
